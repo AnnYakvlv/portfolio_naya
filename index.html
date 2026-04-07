@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>naya.des</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="adaptiv.css" />
+</head>
+<body>
+  <!-- Обертка для скролла -->
+  <div class="scroll-wrapper" id="first">
+    
+    <!-- Блок с анимацией (первый экран) -->
+    <div class="hero-section">
+      <!-- Верхняя панель (приклеена на своем месте) -->
+      <div class="top-bar">
+        <a href="#first" class="nav-link">NaYa.des</a>
+        <div class="right-links">
+          <a href="#about" class="nav-link">Инфо</a>
+          <a href="#projects" class="nav-link">Проекты</a>
+          <a href="#contact" class="nav-link">Связаться</a>
+        </div>
+      </div>
+
+      <!-- Центральный прямоугольник с текстом -->
+      <div class="center-content">
+        <div class="center-name">
+            <p>Портфолио</p>
+        </div>
+        <div class="outlined-box">
+          <p>веб-дизайнер</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- ПУСТОЙ КЛАСС (новый блок после анимации) -->
+  <div class="empty-block" id="about">
+  <!-- Заголовок по центру -->
+  <div class="center-name">
+    <p>обо мне</p>
+  </div>
+  
+  <!-- Блок с двумя контейнерами (левый и правый) -->
+  <div class="two-columns">
+    <div class="left-column">
+    <div class="blue-rectangle"></div>
+    <!-- Новый контейнер вместо изображения -->
+    <div class="content-container">
+        <div class="black-rectangle"></div>
+        <div class="content-overlay">
+        <div class="future-content">
+            <!-- Квадратное фото -->
+            <div class="square-photo">
+            <img src="images/id.JPG" alt="квдрат"></div>
+            
+            <!-- Строка с двумя текстами по разные стороны -->
+            <div class="info-row">
+            <span class="info-left">имя:</span>
+            <span class="info-right">Анастасия</span>
+            </div>
+            
+            <!-- Контейнер с border - здесь ВСЁ что после квадратного фото и первой строки -->
+            <div class="bordered-container">
+            <!-- 3 строки с текстом по разные стороны -->
+            <div class="border-row">
+                <span class="border-left">образование:</span>
+                <span class="border-right">СПБГУПТД (2022-2026)</span>
+            </div>
+            <div class="border-row">
+                <span class="border-left">тип личности:</span>
+                <span class="border-right">INFJ</span>
+            </div>
+            <div class="border-row">
+                <span class="border-left">сфера:</span>
+                <span class="border-right">web-дизайн, графический дизайн</span>
+            </div>
+            
+            <!-- Горизонтальная черная линия -->
+            <div class="horizontal-line"></div>
+            
+            <!-- Строка с 3 блоками текста по центру -->
+            <div class="three-columns">
+                <a href="#" class="col-text">тг: @yweocii</a>
+                <a href="#" class="col-text">Behance</a>
+                <a href="#" class="col-text">210997tujh840@gmail.com</a>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+    <div class="right-column">
+      <!-- Правый контент -->
+      <div class="photo-item ph-1">
+       <img src="images/хард.png" alt="фотка">
+      </div>
+      <div class="photo-item ph-2">
+       <img src="images/софт.png" alt="фотка">
+      </div>
+      <div class="photo-item ph-3">
+       <img src="images/image 10.png" alt="фотка">
+      </div>
+    </div>
+  
+  </div>
+
+  <div class="block-3" id="projects">
+  <!-- Заголовок по центру -->
+  <div class="center-name">
+    <p>кейсы</p>
+  </div>
+  
+  <!-- Контейнер слайдера -->
+  <div class="slider-container">
+    <div class="slider-track" id="sliderTrack">
+      <a href="firstproj.html" class="slide-link" target="_blank" rel="noopener noreferrer">
+      <!-- Слайд 1 -->
+      <div class="slide">
+        <div class="slide-image">
+          <img src="images/джам_комп.png" alt="Кейс 1">
+        </div></a>
+        <div class="slide-text">
+          <h3 class="slide-title">JAMM</h3>
+          <p class="slide-description">Сайт покупки билетов</p>
+        </div>
+      </div> 
+      
+      <!-- Слайд 2 -->
+      <a href="secondproj.html" class="slide-link">
+      <div class="slide">
+        <div class="slide-image">
+          <img src="images/кор_комп1.png" alt="Кейс 2">
+        </div></a>
+        <div class="slide-text">
+          <h3 class="slide-title">Мащиссойо</h3>
+          <p class="slide-description">Онлайн ресторан</p>
+        </div>
+      </div>
+      
+      <!-- Слайд 3 -->
+       <a href="thirdproj.html" class="slide-link">
+      <div class="slide">
+        <div class="slide-image">
+          <img src="images/чивава_деск.png" alt="Кейс 3">
+        </div></a>
+        <div class="slide-text">
+          <h3 class="slide-title">Чивава</h3>
+          <p class="slide-description">Клиника для питомцев</p>
+        </div>
+      </div>
+      
+      <!-- Слайд 4 -->
+      <div class="slide">
+        <div class="slide-image">
+          <img src="images/форма_деск.png" alt="Кейс 4">
+        </div>
+        <div class="slide-text">
+          <h3 class="slide-title">Форма&Функция</h3>
+          <p class="slide-description">Мероприятия для дизайнеров</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <div class="slide-image">
+          <img src="images/прил_деск.png" alt="Кейс 5">
+        </div>
+        <div class="slide-text">
+          <h3 class="slide-title">ТиДи</h3>
+          <p class="slide-description">Веб-приложение для телеграма</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Кастомная полоса прокрутки -->
+  <div class="scrollbar-container">
+    <div class="scrollbar-track">
+      <div class="scrollbar-thumb" id="scrollbarThumb"></div>
+    </div>
+  </div>
+</div>
+
+    <div class="forma" id="contact">
+  <div class="center-name">
+    <p>есть идеи? напишите!</p>
+  </div>
+  <div class="form-container">
+    <div class="form-top-bar">
+      <div class="form-bar-txt"><p>Хотите заказать сайт?</p></div>
+    </div>
+    <form class="contact-form" id="contactForm">
+      
+      <!-- Верхний ряд: задача и почта -->
+      <div class="form-row">
+        <div class="form-group">
+          <label for="task">Задача</label>
+          <select id="task" name="task" class="form-select">
+            <option value="web-design">Лендинг</option>
+            <option value="ui-ux">UI/UX дизайн</option>
+            <option value="branding">Сайт</option>
+            <option value="development">Разработка</option>
+            <option value="consultation">Консультация</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Оставьте почту</label>
+          <input type="email" id="email" name="email" class="form-input" placeholder="example@mail.com">
+        </div>
+      </div>
+      
+      <!-- Блок описания идеи -->
+      <div class="form-group full-width">
+        <label for="idea">Опишите вашу идею</label>
+        <textarea id="idea" name="idea" class="form-textarea" placeholder="прим. лендинг для рекламы игры"></textarea>
+      </div>
+      
+      <!-- Кнопка отправки -->
+      <div class="form-button">
+        <button type="submit" class="submit-btn">Отправить</button>
+      </div>
+    </form>
+  </div>
+  <!-- Модальное окно -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="modal-close">&times;</span>
+      </div>
+      <div class="modal-body">
+        <svg class="modal-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 6L9 17L4 12" stroke="#00C853" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Спасибо!</h3>
+        <p>Ваша заявка успешно отправлена.<br>Я свяжусь с вами в ближайшее время.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-btn">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Футер внизу страницы -->
+    <footer class="footer">
+      <div class="footer-container">
+        <a href="" target="_blank" rel="noopener noreferrer">© naya.des 2026</a>
+        <a href="#" class="back-to-top">вернуться на верх</a>
+        <a href="" class="privacy-policy">политика конфиденциальности</a>
+      </div>
+  </footer>
+    
+  </div>
+  
+  <div class="custom-cursor" id="customCursor"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="animation1.js"></script>
+  <script src="slider.js"></script>
+
+  
+</body>
+</html>
