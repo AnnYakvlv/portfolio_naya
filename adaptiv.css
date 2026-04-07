@@ -1,0 +1,268 @@
+@media (max-width: 768px) {
+  /* Скрываем кастомный курсор на мобильных */
+  body {
+    cursor: auto;
+  }
+  
+  .custom-cursor {
+    display: none;
+  }
+  
+  /* Навигация */
+  .top-bar {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .right-links {
+    gap: 1rem;
+  }
+  
+  /* Заголовок */
+  .center-name {
+    font-size: 2.5rem;
+  }
+  
+  .outlined-box {
+    padding: 0.5rem 1.5rem;
+  }
+  
+  .outlined-box p {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+  
+  /* Блок "обо мне" - выстраиваем в колонку */
+  .two-columns {
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 3rem;
+  }
+  
+  .left-column {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  /* Масштабируем контейнеры под мобильный экран */
+  .content-container {
+    width: 300px;
+    height: auto;
+    min-height: 480px;
+  }
+  
+  .blue-rectangle,
+  .black-rectangle {
+    width: 320px;
+    height: 520px;
+  }
+  
+  .blue-rectangle {
+    left: 10px;
+  }
+  
+  .black-rectangle {
+    width: 320px;
+    height: 520px;
+    top: -8px;
+    left: 8px;
+  }
+  
+  .content-overlay {
+    padding: 15px;
+    top: -8px;
+    left: 18px;
+  }
+  
+  .square-photo {
+    width: 240px;
+    height: 240px;
+    margin-bottom: 16px;
+  }
+  
+  .info-right {
+    font-size: 18px;
+  }
+  
+  .border-row {
+    font-size: 11px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .three-columns {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .col-text {
+    font-size: 9px;
+    text-align: center;
+  }
+  
+  /* Правая колонка */
+  .right-column {
+    width: 100%;
+    gap: 1.5rem;
+  }
+  
+  .photo-item {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .right-column .photo-item img {
+    max-width: 80%;
+    margin: 1rem 1rem;
+    position: relative;
+  }
+
+  .ph-3 img .ph-2 img{
+    left: -30px;
+  }
+  
+  /* Блок кейсов */
+  .block-3 {
+    margin-top: 0;
+    padding: 1rem 0 2rem;
+  }
+  
+  .block-3 .center-name {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .slider-container {
+    padding: 0 0.5rem;
+  }
+  
+  .slider-track {
+    gap: 0.8rem;
+    padding: 0 0.5rem;
+  }
+  
+  .slide {
+    width: 260px;
+  }
+  
+  .slide-title {
+    font-size: 18px;
+  }
+  
+  .slide-description {
+    font-size: 12px;
+  }
+  
+  .scrollbar-thumb {
+    width: 60px;
+    height: 18px;
+  }
+  
+  .scrollbar-track {
+    height: 28px;
+  }
+  
+  /* Форма */
+  .forma {
+    padding: 1rem 0 2rem;
+    gap: 1rem;
+  }
+  
+  .form-top-bar {
+    padding: 6px 16px;
+  }
+  
+  .form-bar-txt {
+    font-size: 12px;
+  }
+  
+  .contact-form {
+    padding: 1rem;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .form-group {
+    width: 100%;
+  }
+  
+  .form-select,
+  .form-input,
+  .form-textarea {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  
+  .form-button {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  /* Футер */
+  .footer {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .footer a {
+    font-size: 11px;
+  }
+}
+
+/* Дополнительная адаптация для iPhone 12 Pro (390px) */
+@media (max-width: 390px) {
+  .center-name {
+    font-size: 2rem;
+  }
+  
+  .outlined-box {
+    padding: 0.4rem 1.2rem;
+  }
+  
+  .content-container {
+    width: 280px;
+  }
+  
+  .blue-rectangle,
+  .black-rectangle {
+    width: 300px;
+    height: 500px;
+  }
+  
+  .square-photo {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .info-right {
+    font-size: 16px;
+  }
+  
+  .border-row {
+    font-size: 10px;
+  }
+  
+  .slide {
+    width: 240px;
+  }
+  
+  .slide-title {
+    font-size: 16px;
+  }
+  
+  .slide-description {
+    font-size: 11px;
+  }
+}

@@ -1,0 +1,973 @@
+@font-face {
+  font-family: 'Rostov';
+  src: url('Rostov.ttf') format('ttf'),
+       url('Rostov.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  cursor: none;
+  overflow-x: hidden;
+}
+
+/* Обертка для скролла */
+.scroll-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  z-index: 2;
+}
+
+/* Блок с анимацией (первый экран) */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+}
+
+#webGLApp {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Верхняя панель с текстом (приклеена на своем месте) */
+.top-bar {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  right: 2rem;
+  z-index: 1000; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #000000;
+  font-family: 'Rostov';
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+/* Стили для всех ссылок в навбаре */
+.top-bar a {
+  color: #000000;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+/* Псевдоэлемент для верхней и нижней границы */
+.top-bar a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-top: 2px solid #262626;
+  border-bottom: 2px solid #262626;
+  transform: scaleY(2);
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+.top-bar a:hover::before {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.top-bar a:hover::after {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+/* Эффект при нажатии */
+.top-bar a:active {
+  color: #0041FF;
+}
+
+.right-links {
+  display: flex;
+  gap: 2rem;
+}
+
+
+/* Центрированный контейнер с прямоугольником */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  pointer-events: none;
+}
+
+.center-name {
+  font-family: 'Rostov', sans-serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: #000000;
+  align-self: center;
+}
+
+.outlined-box {
+  border: 2px solid #000000;
+  border-radius: 999px;
+  padding: 0.75rem 2rem;
+  display: inline-block;
+  background: transparent;
+  max-width: 50%;
+  width: fit-content;
+  backdrop-filter: blur(2px);
+  margin-top: 1rem;
+}
+
+.outlined-box p {
+  color: #000000;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-align: center;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+/* ПУСТОЙ КЛАСС (новый блок после анимации) */
+.empty-block {
+  position: relative;
+  width: 100%;
+  background: #F1F2F6;
+  z-index: 0;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+
+/* Блок с двумя колонками */
+.two-columns {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Левая колонка */
+.left-column {
+  flex: 1;
+  position: relative;
+}
+
+.content-container {
+  width: 330px;
+  height: 530px;
+  position: relative;
+  z-index: 4;
+
+}
+
+/* Черный прямоугольник с заданными размерами */
+.black-rectangle {
+  width: 352px;
+  height: 552px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #666666;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  z-index: 1;
+  transform: rotate(-5deg);
+}
+
+/* Слой для дополнительного контента поверх черного прямоугольника */
+.content-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Outfit', sans-serif;
+  padding: 20px;
+  top: -10px;
+  left: 20px;
+  transform: rotate(-5deg);
+}
+
+/* Контейнер для будущего контента */
+.square-photo {
+  width: 272px;
+  height: 264px;
+  background-color: #DDDDDD;
+  border-radius: 8px;
+  margin: 0 auto 24px auto;
+}
+
+.square-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* фото заполнит весь квадрат, обрезая лишнее */
+  display: block;
+}
+
+/* Строка с двумя текстами */
+.info-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.info-left {
+  font-size: 14px;
+  color: #000000;
+  text-align: left;
+}
+
+.info-right {
+  font-family: 'Rostov';
+  font-size: 20px;
+  color: #000000;
+  text-align: right;
+}
+
+/* Контейнер с border - теперь содержит всё остальное */
+.bordered-container {
+  width: 100%;
+  border: 1px solid #000000;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.border-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 12px;
+}
+
+.border-row:last-of-type {
+  margin-bottom: 12px;
+}
+
+.border-left {
+  color: #333333;
+  text-align: left;
+}
+
+.border-right {
+  color: #333333;
+  text-align: right;
+}
+
+/* Горизонтальная черная линия */
+.horizontal-line {
+  width: 110%;
+  height: 8px;
+  margin-left: -12px;
+  background-color: #000000;
+  margin-bottom: 12px;
+}
+
+/* Три колонки с текстом */
+.three-columns {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.col-text {
+  flex: 1;
+  text-align: start;
+  font-size: 10px;
+  color: #000000;
+  font-weight: 500;
+  text-decoration: none;
+}
+.col-text:hover {
+  font-weight: 700;
+  color: #0026cc;
+}
+
+.col-text:active {
+  color: #000000;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+/*.left-column img {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  position: relative;
+  z-index: 4;
+}*/
+
+.blue-rectangle {
+  position: absolute;
+  width: 352px;
+  height: 552px;
+  background-color: #0041FF;
+  border-radius: 16px;
+  display: block;
+  z-index: 3;
+  left: 20px;
+}
+
+/* Правая колонка */
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content:left ;
+  align-items: flex-start;
+}
+.photo-item {
+  flex: 1;
+  position: relative;
+
+}
+
+.right-column .photo-item img {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.ph-1 img {
+  z-index: 3;
+  left: -16px;
+}
+
+.ph-2 img {
+  z-index: 4;
+  bottom: 96px;
+  left: 200px;
+}
+.ph-3 img {
+  z-index: 5;
+  bottom: 552px;
+  right: -456px;
+}
+
+.block-3 {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;
+  background: #F1F2F6;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: -8rem;
+}
+
+/* Контейнер слайдера */
+.slider-container {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  padding: 0 4rem;
+}
+
+/* Трек слайдера */
+.slider-track {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  transition: transform 0.3s ease-out;
+  cursor: grab;
+  user-select: none;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  scrollbar-width: none; /* Скрываем стандартный скроллбар */
+  -ms-overflow-style: none;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-track:active {
+  cursor: grabbing;
+}
+
+/* Отдельный слайд */
+.slide {
+  flex-shrink: 0;
+  width: 384px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Контейнер для изображения */
+.slide-image {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover эффект для фото: граница + размытие */
+.slide-image:hover {
+  border: 3px solid #0041FF;
+}
+
+.slide-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition:  border-color 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover эффект: граница и размытие */
+.slide-image:hover img {
+  filter: blur(2px);
+}
+.slide-link a:active{
+  color: #0041FF;
+}
+
+/* Текст под изображением */
+.slide-text {
+  padding: 16px 0;
+  margin-top: 0;
+}
+
+.slide-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+.slide-description {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  color: #666666;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* Контейнер для кастомного скроллбара */
+.scrollbar-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Трек скроллбара (фоновая полоса) */
+.scrollbar-track {
+  width: 100%;
+  height: 40px;
+  background: #E9E9E9;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  
+}
+
+/* Ползунок скроллбара - выравнивание по центру */
+.scrollbar-thumb {
+  position: absolute;
+  height: 24px;
+  width: 100px;
+  background: #D9D9D9;
+  cursor: grab;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.scrollbar-thumb:active {
+  cursor: grabbing;
+  background: #0041FF;
+}
+
+.forma {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  background: #F1F2F6;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 3rem;
+}
+.form-top-bar {
+  width: 100%;
+  height: 40px;
+  background-color: #0041FF;
+  color: #ffffff;
+  display: flex;
+  padding: 8px 32px;
+}
+
+.form-bar-txt{
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+}
+
+/* Контейнер формы */
+.form-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Сама форма */
+.contact-form {
+  width: 100%;
+  background: #D1D1D1;
+  padding: 2rem;
+}
+
+/* Ряд с двумя элементами */
+.form-row {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Группа формы */
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  
+}
+
+/* Полная ширина для текстового поля */
+.form-group.full-width {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Стили для label */
+.form-group label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 550;
+  color: #000000;
+}
+
+/* Стили для select */
+.form-select {
+  width: 100%;
+  padding: 12px 40px 12px 16px; /* правый отступ для стрелки */
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #666666;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* SVG стрелка */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 24px;
+}
+
+.form-select:hover {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230041FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  border-color: #0041FF;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #000000;
+}
+
+/* Стили для input */
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #333;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  transition: all 0.3s ease;
+}
+
+.form-input:hover {
+  border-color: #0041FF;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #0041FF;
+  
+}
+
+/* Стили для textarea */
+.form-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #333;
+  background: #F5F5F5;
+  border: 1px solid #E0E0E0;
+  resize: vertical;
+  min-height: 120px;
+
+}
+
+.form-textarea:hover {
+  border-color: #0041FF;
+}
+
+.form-textarea:focus {
+  outline: none;
+  border-color: #0041FF;
+  
+}
+
+/* Кнопка отправки */
+.form-button {
+  margin-top: 64px;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+.submit-btn {
+  padding: 12px 32px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: #000000;
+  background: #D9D9D9;
+  border: 1px solid #414141;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  color: #ffffff;
+  background: #0033cc;
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-container {
+    padding: 0 1rem;
+  }
+  
+  .contact-form {
+    padding: 1.5rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .form-button {
+    justify-content: stretch;
+  }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .slide {
+    width: 300px;
+  }
+  
+  .slide-title {
+    font-size: 24px;
+  }
+  
+  .slide-description {
+    font-size: 18px;
+  }
+  
+  .scrollbar-thumb {
+    width: 60px;
+  }
+  
+  .block-3 {
+    padding: 2rem 0;
+  }
+}
+
+/* Футер внизу страницы */
+.footer {
+  position: fixed;
+  bottom: 2rem;
+  left: 0; /* Меняем на 0, чтобы контейнер занимал всю ширину */
+  right: 0; /* Добавляем, чтобы растянуть на всю ширину */
+  z-index: 10;
+  padding: 0 2rem; /* Добавляем отступы по бокам, как был отступ слева 2rem */
+  pointer-events: auto;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer:hover {
+  opacity: 1;
+}
+
+/* Контейнер для трёх элементов */
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #000000;
+  font-family: 'Rostov', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+}
+
+.footer-container a {
+  /*color: #000000;*/
+  text-decoration: none;
+}
+.footer-container a:hover{
+  color: #000000;
+  text-decoration: none;
+}
+/* Левая ссылка */
+.footer-container a:first-child {
+  text-align: left;
+  color: #000000;
+}
+
+/* Центральная ссылка */
+.back-to-top {
+  text-align: center;
+  color: #717171;
+  font-size: 1.2rem;
+}
+
+/* Правая ссылка */
+.privacy-policy {
+  text-align: right;
+  color: #000000;
+}
+
+/* Кастомный курсор */
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-width 0.2s ease;
+  background: transparent;
+  will-change: transform;
+}
+
+.custom-cursor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #000000;
+  border-radius: 50%;
+}
+
+
+
+body.modal-open {
+  overflow: hidden;
+  cursor: auto;
+}
+body.modal-open .custom-cursor {
+  display: none;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1500;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: 15% auto;
+  width: 90%;
+  max-width: 400px;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  padding: 16px 20px 0 20px;
+  text-align: right;
+}
+
+.modal-close {
+  font-size: 28px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: #333;
+}
+
+.modal-body {
+  padding: 0 32px 24px 32px;
+  text-align: center;
+}
+
+.modal-icon {
+  margin-bottom: 16px;
+  animation: checkmark 0.4s ease-in-out;
+}
+
+.modal-body h3 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 12px 0;
+}
+
+.modal-body p {
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  color: #666666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modal-footer {
+  padding: 0 24px 24px 24px;
+  text-align: center;
+}
+
+.modal-btn {
+  width: 100%;
+  padding: 12px 24px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #ffffff;
+  background: #0041FF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-btn:hover {
+  background: #0033cc;
+  transform: translateY(-1px);
+}
+
+.modal-btn:active {
+  transform: translateY(0);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

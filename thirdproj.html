@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>naya.des - Jamm</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="project.css" />
+  <script src='https://cdn.jsdelivr.net/npm/ogl@0.0.64/dist/ogl.umd.js'></script>
+  
+</head>
+<body>
+  <!-- Верхняя панель -->
+  <div class="top-bar">
+    <a href="index1.html#first" class="nav-link">NaYa.des</a>
+    <div class="right-links">
+      <a href="index1.html#about" class="nav-link">Инфо</a>
+      <a href="index1.html#projects" class="nav-link">Проекты</a>
+      <a href="index1.html#contact" class="nav-link">Связаться</a>
+    </div>
+  </div>
+  
+  <!-- Блок с анимацией (полный экран) -->
+  <div class="hero-animation-section">
+    <!-- Фон с анимацией -->
+    <div class="animation-wrapper">
+      <div id="canvas-container"></div>
+    </div>
+    
+    <!-- Контент поверх анимации -->
+    <div class="hero-content">
+      <div class="navigation-arrows">
+        <div class="nav-arrow-img arrow-left-img" id="prevPageArrow">
+          <img src="images/l-arr.png" alt="предыдущая">
+        </div>
+        <div class="nav-arrow-img arrow-right-img" id="nextPageArrow">
+          <img src="images/r-arr.png" alt="следующая">
+        </div>
+      </div>
+      
+      <div class="center-name">
+        <p>Чивава</p>
+      </div>
+      <div class="deskript">
+        <p>запись в клинику</p>
+      </div>
+      <div class="small-block">
+        <div class="small-block-container">
+          <div class="left-text">
+            <span>2024</span>
+          </div>
+          <div class="outlined-boxes">
+            <div class="outlined-box">HTML</div>
+            <div class="outlined-box">CSS</div>
+            <div class="outlined-box">JavaScript</div>
+            <div class="outlined-box">Figma</div>
+          </div>
+          <div class="right-text">
+            <span> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Остальные блоки после анимации -->
+  <div class="text-work">
+    <div class="work-left">
+      <h3 class="work-title">цель</h3>
+      <div class="work-text">
+        <p>Разработать сревис для записи в ветеринарную клинику</p>
+        <p></p>
+      </div>
+    </div>
+    
+    <div class="work-right">
+      <h3 class="work-title">решение</h3>
+      <div class="work-text">
+        <p>Лендинговая страница с формой для записи питомца на прием</p>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-work">
+    <div class="work-container">
+      <div class="work-name">
+        карусель
+      </div>
+      <div class="work-image">
+        <img src="images/чивава_деск3.png" alt="доп1">
+      </div>
+      <div class="work-description">
+        <p>каждая карточка содержит название услуги и имеет фоновое оформление - веселые фотографии питомцев </p>
+      </div>
+    </div>
+
+    <div class="work-container">
+      <div class="work-name">
+        мгновенная запись
+      </div>
+      <div class="work-image">
+        <img src="images/чивава_деск1.png" alt="доп2">
+      </div>
+      <div class="work-description">
+        <p>яркая форма записи, мгновенно отправляет запрос на лечение Вашего питомца в клинику </p>
+      </div>
+    </div>
+
+    <div class="work-container-full-image">
+      <div class="work-name">
+        мобильная версия
+      </div>
+      <div class="work-image">
+        <img src="images/чив_моб.png" alt="полноразмерное изображение">
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+      <div class="footer-container">
+        <a href="" target="_blank" rel="noopener noreferrer">© naya.des 2026</a>
+        <a href="#" class="back-to-top">вернуться на верх</a>
+        <a href="" class="privacy-policy">политика конфиденциальности</a>
+      </div>
+  </footer>
+
+  <div class="custom-cursor" id="customCursor"></div>
+  
+  <script src="cursor.js"></script>
+  <script src="slider.js"></script>
+  <script src="project.js"></script>
+    
+</body>
+</html>

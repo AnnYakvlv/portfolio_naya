@@ -1,0 +1,480 @@
+body {
+  background-color: #F1F2F6;
+  font-family: 'Outfit', sans-serif;
+}
+
+.hero-animation-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #F1F2F6;
+  overflow: hidden;
+}
+
+.animation-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* Контент поверх анимации */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.navigation-arrows {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.nav-arrow-img {
+  pointer-events: auto;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.nav-arrow-img:hover {
+  transform: scale(1.1);
+}
+
+.nav-arrow-img:active {
+  transform: scale(0.95);
+}
+
+.nav-arrow-img img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+.arrow-left-img {
+  margin-left: 2rem;
+}
+
+.arrow-right-img {
+  margin-right: 2rem;
+}
+
+.center-name {
+  font-family: 'Rostov', sans-serif;
+  font-size: 5rem;
+  font-weight: 300;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.deskript {
+  max-width: 50%;
+  width: fit-content;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ОБЪЕДИНЕННЫЙ small-block - сохранены отступы из style1.css */
+.small-block {
+  width: 100%;
+  padding: 2rem 2rem;
+  background: transparent;
+  position: relative;
+  bottom: -200px;
+}
+
+.small-block-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.left-text {
+  flex: 0 0 auto;
+  min-width: 120px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.telegram-link {
+  color: #000000;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  text-transform: none;
+  position: relative;
+}
+
+.telegram-link:hover {
+  color: #0041FF;
+  font-weight: 600;
+}
+
+/*.telegram-link:active {
+  color: #0026cc;
+}*/
+
+.outlined-boxes {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex: 1;
+}
+
+.outlined-box {
+  border: 1.5px solid #000000;
+  padding: 0.75rem 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+  background: transparent;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  display: inline-block; /* Добавьте */
+  width: auto; 
+  cursor: pointer;
+}
+
+.right-text {
+  flex: 0 0 auto;
+  min-width: 120px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #000000;
+  text-align: right;
+  display: flex;
+  flex-direction: row; 
+  gap: 1rem; 
+  justify-content: flex-end; 
+  flex-wrap: wrap;
+}
+
+/* Стили для остальных блоков */
+.text-work {
+  width: 100%;
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: flex;
+  gap: 4rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background: #F1F2F6;
+}
+
+.work-left, .work-right {
+  flex: 1;
+  min-width: 250px;
+}
+
+.work-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 1.2rem;
+  line-height: 1.2;
+}
+
+.work-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666666;
+}
+
+.content-work {
+  width: 100%;
+  max-width: 1400px;
+  margin: 4rem auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  background: #F1F2F6;
+}
+
+.work-container {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  min-height: 300px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 3rem;
+}
+
+.work-name {
+  flex: 0 0 280px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #000000;
+}
+
+.work-image {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  min-height: 300px;
+}
+
+.work-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.work-description {
+  flex: 0 0 300px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #666666;
+}
+
+.work-container-full-image {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  min-height: 300px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 3rem;
+}
+
+.work-container-full-image .work-name {
+  flex: 0 0 280px;
+}
+
+.work-container-full-image .work-image {
+  flex: 2;
+  min-height: 350px;
+  width: 100%;
+}
+
+.work-container-full-image .work-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  z-index: 10;
+  color: #000000;
+  font-family: 'Rostov', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  background: #F1F2F6;
+  text-align: left;
+}
+
+.footer a {
+  color: #000000;
+  text-decoration: none;
+}
+
+/* Кастомный курсор */
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-width 0.2s ease;
+  background: transparent;
+  will-change: transform;
+}
+
+.custom-cursor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background: #000000;
+  border-radius: 50%;
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  .work-container-full-image {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    min-height: auto;
+    padding-bottom: 2rem;
+  }
+  
+  .work-container-full-image .work-name {
+    flex: auto;
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: left;
+  }
+  
+  .work-container-full-image .work-image {
+    width: 100%;
+    min-height: auto;
+  }
+  
+  .work-container-full-image .work-image img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-arrow-img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .nav-arrow-img img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .center-name {
+    font-size: 3rem;
+  }
+  
+  .deskript {
+    font-size: 20px;
+    max-width: 80%;
+  }
+  
+  .small-block-container {
+    flex-direction: column;
+  }
+  
+  .outlined-box {
+    white-space: normal;
+    font-size: 12px;
+    padding: 0.5rem 1rem;
+  }
+  
+  .work-container {
+    flex-direction: column;
+  }
+  
+  .work-name, .work-description {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .small-block {
+    padding: 1rem 1rem;
+    bottom: -100px;
+  }
+  
+  .small-block-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  /* Левый текст - сверху */
+  .left-text {
+    text-align: center;
+    min-width: auto;
+    width: 100%;
+    font-size: 0.9rem;
+    order: 1;
+  }
+  
+  /* Outlined boxes - по центру */
+  .outlined-boxes {
+    order: 2;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .outlined-box {
+    white-space: normal;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    font-size: 12px;
+  }
+  
+  /* Правый текст/ссылки - снизу */
+  .right-text {
+    order: 3;
+    text-align: center;
+    justify-content: center;
+    min-width: auto;
+    width: 100%;
+    font-size: 0.9rem;
+    gap: 1rem;
+  }
+  
+  .telegram-link {
+    font-size: 0.9rem;
+  }
+}
