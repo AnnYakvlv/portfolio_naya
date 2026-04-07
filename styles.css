@@ -538,6 +538,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   gap: 3rem;
+  padding-bottom: 120px;
 }
 .form-top-bar {
   width: 100%;
